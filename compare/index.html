@@ -202,7 +202,7 @@
 
             })
         } else if(params[1] == "tiktok") {
-            fetch(`${key}https://api.mixerno.space/tiktok/${params[2]}`)
+            fetch(`${key}https://api.mixerno.space/tiktok/user/${params[2]}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
@@ -276,7 +276,7 @@
 
             })
         } else if(params[3] == "tiktok") {
-            fetch(`${key}https://api.mixerno.space/tiktok/${params[4]}`)
+            fetch(`${key}https://api.mixerno.space/tiktok/user/${params[4]}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
