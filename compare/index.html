@@ -1,561 +1,713 @@
 <html>
 
 <head>
-    <title id="pog">LIVECOUNTS.SPACE</title>
-    <meta name="description" content="Really simple design.">
-    <link rel="shortcut icon"
-    href="https://pbs.twimg.com/profile_images/1275176112037953536/511LDzfp_400x400.jpg">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="https://mixerno.space/jquery-3.1.1.min.js"></script>
-    <link rel="stylesheet" href="https://mixerno.space/o2.css" />
-    <script src="https://mixerno.space/odometer.js"></script>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
+  <title id="pog">LIVECOUNTS.SPACE</title>
+  <meta name="description" content="Really simple design.">
+  <link rel="shortcut icon" href="https://pbs.twimg.com/profile_images/1275176112037953536/511LDzfp_400x400.jpg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="https://mixerno.space/jquery-3.1.1.min.js"></script>
+  <link rel="stylesheet" href="https://mixerno.space/o2.css" />
+  <script src="https://mixerno.space/odometer.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
 </head>
 
 <body>
-    <center>
+  <center>
+    <div>
+      <span>BETA v0.1 Livecounts.space</span>
+    </div><br>
+    <div class="row">
+      <div class="main">
         <div>
-            <span>BETA v0.1 Livecounts.space</span>
-        </div><br>
-        <div class="row">
-<div class="main">
-  <div>
-    <img id="imag" src="https://pbs.twimg.com/profile_images/1275176112037953536/511LDzfp_400x400.jpg">
-    <div id="username">Name</div>
-    <div></div>
-    <div id="followerscount" class="odometer">0</div>
-  </div>
-</div>
-<div class="main">
-  <img id="imag2" src="https://pbs.twimg.com/profile_images/1275176112037953536/511LDzfp_400x400.jpg">
-  <div id="username2">Name</div>
-  <div></div>
-  <div id="followerscount2" class="odometer">0</div>
-</div>
-</div>
-<br>
-<div class="main2">
-  <div id="difs" class="odometer">0</div>
-  <div>Diffrence</div>
-    <div id="graph">Graph</div>
-</div><br>
-<div>
-  <div class="main">
-    <span>Platform (user 1): <select id="pltform">
-        <option value="s" selected>Select</option>
-        <option value="twitter">Twitter</option>
-        <option value="twitch">Twitch</option>
-        <option value="tiktok">TikTok</option>
-      </select></span>
-      <input type="text" placeholder="USERNAME (user 1)" id="usersearch">
-      <button id="serch">Search (user 1)</button>
-      <br>
-      <br>
+          <img id="imag" src="https://pbs.twimg.com/profile_images/1275176112037953536/511LDzfp_400x400.jpg">
+          <div id="username">Name</div>
+          <div></div>
+          <div id="followerscount" class="odometer">0</div>
+        </div>
+      </div>
+      <div class="main">
+        <img id="imag2" src="https://pbs.twimg.com/profile_images/1275176112037953536/511LDzfp_400x400.jpg">
+        <div id="username2">Name</div>
+        <div></div>
+        <div id="followerscount2" class="odometer">0</div>
+      </div>
+    </div>
+    <br>
+    <div class="main2">
+      <div id="difs" class="odometer">0</div>
+      <div>Diffrence</div>
+      <div id="graph">Graph</div>
+    </div><br>
+    <div>
+      <div class="main">
+        <span>Platform (user 1): <select id="pltform">
+            <option value="s" selected>Select</option>
+            <option value="twitter">Twitter</option>
+            <option value="twitch">Twitch</option>
+            <option value="tiktok">TikTok</option>
+            <option value="roblox">Roblox</option>
+            <option value="dailymotion">DailyMotion</option>
+            <option value="storyfire">StoryFire</option>
+          </select></span>
+        <input type="text" placeholder="USERNAME (user 1)" id="usersearch">
+        <button id="serch">Search (user 1)</button>
+        <br>
+        <br>
         <span>Platform (user 2): <select id="pltform2">
             <option value="s" selected>Select</option>
             <option value="twitter">Twitter</option>
             <option value="twitch">Twitch</option>
             <option value="tiktok">TikTok</option>
+            <option value="roblox">Roblox</option>
+            <option value="dailymotion">DailyMotion</option>
+            <option value="storyfire">StoryFire</option>
           </select></span>
-          <input type="text" placeholder="USERNAME (user 2)" id="usersearch2">
-          <button id="serch2">Search (user 2)</button>
-</div>
-</div>
-<br>
+        <input type="text" placeholder="USERNAME (user 2)" id="usersearch2">
+        <button id="serch2">Search (user 2)</button>
+      </div>
+    </div>
+    <br>
 
-</center>
+  </center>
 </body>
 <style>
-    body {
-        background-color:rgb(30, 30, 30);
-        color: white;
-        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    }
-    .row {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      flex: 4;
-    }
-    .main {
-        width: 25%;
-        border: solid rgb(60, 60, 60);
-        border-radius: 1%;
-        padding: 1vh;
-    }
-    .main2 {
-        width: 50%;
-        border: solid rgb(60, 60, 60);
-        border-radius: 1%;
-        padding: 1vh;
-    }
-    #imag,#imag2 {
-        height: 88;
-        width: 88;
-        border: solid white;
-        border-radius: 50%;
-    }
-    #username,#username2 {
-        font-size: 4vh;
-    }
-    #followerscount,#followerscount2,#difs {
-        font-size: 5vh;
-    }
+  body {
+    background-color: rgb(30, 30, 30);
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex: 4;
+  }
+
+  .main {
+    width: 25%;
+    border: solid rgb(60, 60, 60);
+    border-radius: 1%;
+    padding: 1vh;
+  }
+
+  .main2 {
+    width: 50%;
+    border: solid rgb(60, 60, 60);
+    border-radius: 1%;
+    padding: 1vh;
+  }
+
+  #imag,
+  #imag2 {
+    height: 88;
+    width: 88;
+    border: solid white;
+    border-radius: 50%;
+  }
+
+  #username,
+  #username2 {
+    font-size: 4vh;
+  }
+
+  #followerscount,
+  #followerscount2,
+  #difs {
+    font-size: 5vh;
+  }
 </style>
 <script>
-    var key = "https://cors.mixerno.space/";
-    //var key = "";
-    var urli = window.location.href;
-    var params = urli.split('?');
-    var stuff = new Highcharts.chart('graph', {
-      chart: {
-        backgroundColor: 'transparent',
-        renderTo: graph,
-        type: 'spline'
+  var key = "https://cors.mixerno.space/";
+  //var key = "";
+  var urli = window.location.href;
+  var params = urli.split('?');
+  var stuff = new Highcharts.chart('graph', {
+    chart: {
+      backgroundColor: 'transparent',
+      renderTo: graph,
+      type: 'spline'
+    },
+    title: {
+      text: ``
+    },
+    xAxis: {
+      visible: false,
+      type: 'datetime',
+      tickPixelInterval: 500,
+      labels: {
+        style: {
+          color: "#1e1e1e"
+        },
+        enabled: false
       },
+      lineWidth: 0,
+      lineColor: '#1e1e1e',
+
+    },
+    yAxis: {
+      visible: false,
       title: {
-        text: ``
+        text: ''
       },
-      xAxis: {
-        visible: false,
-        type: 'datetime',
-        tickPixelInterval: 500,
-        labels: {
-          style: {
-            color: "#1e1e1e"
-          },
-          enabled: false
-        },
-        lineWidth: 0,
-        lineColor: '#1e1e1e',
-        
-      },
-      yAxis: {
-        visible: false,
-        title: {
-          text: ''
-        },
-        labels: {
-            enabled: false
-        },
-        
-        lineColor: "#3c3c3c",
-        gridLineColor: "#3c3c3c",
-        tickColor: "#3c3c3c",
-        gridLineWidth: 0,
-                minorGridLineWidth: 0,
+      labels: {
+        enabled: false
       },
 
-      credits: {
-        enabled: false,
-        text: "Livecounts.space"
+      lineColor: "#3c3c3c",
+      gridLineColor: "#3c3c3c",
+      tickColor: "#3c3c3c",
+      gridLineWidth: 0,
+      minorGridLineWidth: 0,
+    },
+
+    credits: {
+      enabled: false,
+      text: "Livecounts.space"
+    },
+
+    series: [{
+      showInLegend: false,
+      name: 'Followers',
+      marker: {
+        enabled: false
       },
+      color: 'white',
+      lineColor: 'white'
 
-      series: [{
-        showInLegend: false,
-        name: 'Followers',
-        marker: {
-          enabled: false
-        },
-        color: 'white',
-        lineColor: 'white'
-
-      }]
-    })
-    GETDATA()
-    var count = 0;
-    var count2 = 0;
-    function GETDATA() {
-        urli = window.location.href;
+    }]
+  })
+  GETDATA()
+  var count = 0;
+  var count2 = 0;
+  function GETDATA() {
+    urli = window.location.href;
     params = urli.split('?');
-        if(params[1] == "twitter") {
-            fetch(`${key}https://api.mixerno.space/twitter/user/${params[2]}`)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                username.innerHTML = data.name
+    if (params[1] == "twitter") {
+      fetch(`${key}https://api.mixerno.space/twitter/user/${params[2]}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+          username.innerHTML = data.name
           $("#imag").attr('src', `${data.pfp}`);
 
-            })
-            fetch(`https://bastet.socialblade.com/twitter/lookup?query=${params[2]}`)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                followerscount.innerHTML = data
+        })
+      fetch(`https://bastet.socialblade.com/twitter/lookup?query=${params[2]}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+          followerscount.innerHTML = data
 
-          
+
           count = data
 
-            })
-        } else if(params[1] == "twitch") {
-            fetch(`${key}https://api.mixerno.space/twitch/user/${params[2]}`)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                followerscount.innerHTML = data.followers
-                username.innerHTML = data.name
+        })
+    } else if (params[1] == "twitch") {
+      fetch(`${key}https://api.mixerno.space/twitch/user/${params[2]}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+          followerscount.innerHTML = data.followers
+          username.innerHTML = data.name
           $("#imag").attr('src', `${data.pfp}`);
           //plsworkgraph = json.subscribers.replace(/""/, "");
 
           count = data.followers
 
+        })
+    } else if (params[1] == "tiktok") {
+      fetch(`${key}https://api.mixerno.space/tiktok/user/${params[2]}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+          followerscount.innerHTML = data.followers
+          username.innerHTML = data.name
+          $("#imag").attr('src', `${data.pfp}`);
+          //plsworkgraph = json.subscribers.replace(/""/, "");
+          count = data.followers
+
+        })
+    } else if(params[1] == "roblox") {
+            fetch(`${key}https://friends.roblox.com/v1/users/${params[2]}/followers/count`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                followerscount.innerHTML = data.count
+          //plsworkgraph = json.subscribers.replace(/""/, "");
+
+          count = data.count
+
             })
-        } else if(params[1] == "tiktok") {
-            fetch(`${key}https://api.mixerno.space/tiktok/user/${params[2]}`)
+            fetch(`${key}https://thumbnails.roblox.com/v1/users/avatar-headshot?size=150x150&format=Png&isCircular=false&userIds=${params[2]}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+          $("#imag").attr('src', `${data.data[0].imageUrl}`);
+
+            })
+            fetch(`${key}https://api.roblox.com/users/${params[2]}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                username.innerHTML = data.Username
+
+            })
+        } else if(params[1] == "dailymotion") {
+            fetch(`${key}https://api.mixerno.space/dailymotion/user/${params[2]}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
                 followerscount.innerHTML = data.followers
+                $("#imag").attr('src', `${data.pfp}`);
                 username.innerHTML = data.name
-          $("#imag").attr('src', `${data.pfp}`);
           //plsworkgraph = json.subscribers.replace(/""/, "");
+
+          count = data.followers
+
+            })
+        } else if(params[1] == "storyfire") {
+            fetch(`${key}https://api.mixerno.space/storyfire/user/${params[2]}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                followerscount.innerHTML = data.followers
+                $("#imag").attr('src', `${data.pfp}`);
+                username.innerHTML = data.name
+          //plsworkgraph = json.subscribers.replace(/""/, "");
+
           count = data.followers
 
             })
         }
-        GETDATA2()
-      
+    GETDATA2()
 
-    };
-    function GETDATA2() {
-        urli = window.location.href;
+
+  };
+  function GETDATA2() {
+    urli = window.location.href;
     params = urli.split('?');
-        if(params[3] == "twitter") {
-            fetch(`${key}https://api.mixerno.space/twitter/user/${params[4]}`)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                username2.innerHTML = data.name
+    if (params[3] == "twitter") {
+      fetch(`${key}https://api.mixerno.space/twitter/user/${params[4]}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+          username2.innerHTML = data.name
           $("#imag2").attr('src', `${data.pfp}`);
 
-            })
-            fetch(`https://bastet.socialblade.com/twitter/lookup?query=${params[4]}`)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                followerscount2.innerHTML = data
-                if(data == 0) {
-                    
-                } else {
-                  difs.innerHTML = count - data
-                    stuff.series[0].addPoint([
-            (new Date()).getTime(),
-            count - data
-          ]);
-          if (stuff.series[0].data.length >= 700) {
-            stuff.series[0].data[0].remove()
+        })
+      fetch(`https://bastet.socialblade.com/twitter/lookup?query=${params[4]}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+          followerscount2.innerHTML = data
+          if (data == 0) {
+
+          } else {
+            difs.innerHTML = count - data
+            stuff.series[0].addPoint([
+              (new Date()).getTime(),
+              count - data
+            ]);
+            if (stuff.series[0].data.length >= 700) {
+              stuff.series[0].data[0].remove()
+            }
           }
-                }
-          
+
           count2 = data
 
+        })
+    } else if (params[3] == "twitch") {
+      fetch(`${key}https://api.mixerno.space/twitch/user/${params[4]}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+          followerscount2.innerHTML = data.followers
+          username2.innerHTML = data.name
+          $("#imag2").attr('src', `${data.pfp}`);
+          //plsworkgraph = json.subscribers.replace(/""/, "");
+          if (data.followers == 0) {
+
+          } else {
+            difs.innerHTML = count - data.followers
+            stuff.series[0].addPoint([
+              (new Date()).getTime(),
+              count - data.followers
+            ]);
+            if (stuff.series[0].data.length >= 700) {
+              stuff.series[0].data[0].remove()
+            }
+          }
+          count2 = data.followers
+
+        })
+    } else if (params[3] == "tiktok") {
+      fetch(`${key}https://api.mixerno.space/tiktok/user/${params[4]}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+          followerscount2.innerHTML = data.followers
+          username2.innerHTML = data.name
+          $("#imag2").attr('src', `${data.pfp}`);
+          //plsworkgraph = json.subscribers.replace(/""/, "");
+          if (data.followers == 0) {
+
+          } else {
+            difs.innerHTML = count - data.followers
+            stuff.series[0].addPoint([
+              (new Date()).getTime(),
+              count - data.followers
+            ]);
+            if (stuff.series[0].data.length >= 700) {
+              stuff.series[0].data[0].remove()
+            }
+          }
+          count2 = data.followers
+
+        })
+    } else if(params[3] == "roblox") {
+            fetch(`${key}https://friends.roblox.com/v1/users/${params[2]}/followers/count`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                followerscount.innerHTML = data.count
+          //plsworkgraph = json.subscribers.replace(/""/, "");
+          if (data.count == 0) {
+
+} else {
+  difs.innerHTML = count - data.count
+  stuff.series[0].addPoint([
+    (new Date()).getTime(),
+    count - data.count
+  ]);
+  if (stuff.series[0].data.length >= 700) {
+    stuff.series[0].data[0].remove()
+  }
+}
+          count2 = data.count
+
             })
-        } else if(params[3] == "twitch") {
-            fetch(`${key}https://api.mixerno.space/twitch/user/${params[4]}`)
+            fetch(`${key}https://thumbnails.roblox.com/v1/users/avatar-headshot?size=150x150&format=Png&isCircular=false&userIds=${params[4]}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+          $("#imag2").attr('src', `${data.data[0].imageUrl}`);
+
+            })
+            fetch(`${key}https://api.roblox.com/users/${params[4]}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                username2.innerHTML = data.Username
+
+            })
+        } else if(params[3] == "dailymotion") {
+            fetch(`${key}https://api.mixerno.space/dailymotion/user/${params[4]}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
                 followerscount2.innerHTML = data.followers
+                $("#imag2").attr('src', `${data.pfp}`);
                 username2.innerHTML = data.name
-          $("#imag2").attr('src', `${data.pfp}`);
           //plsworkgraph = json.subscribers.replace(/""/, "");
-          if(data.followers == 0) {
-                    
-                } else {
-                  difs.innerHTML = count - data.followers
-                    stuff.series[0].addPoint([
-            (new Date()).getTime(),
-            count - data.followers
-          ]);
-          if (stuff.series[0].data.length >= 700) {
-            stuff.series[0].data[0].remove()
-          }
-                }
+
+          if (data.followers == 0) {
+
+} else {
+  difs.innerHTML = count - data.followers
+  stuff.series[0].addPoint([
+    (new Date()).getTime(),
+    count - data.followers
+  ]);
+  if (stuff.series[0].data.length >= 700) {
+    stuff.series[0].data[0].remove()
+  }
+}
           count2 = data.followers
 
             })
-        } else if(params[3] == "tiktok") {
-            fetch(`${key}https://api.mixerno.space/tiktok/user/${params[4]}`)
+        } else if(params[3] == "storyfire") {
+            fetch(`${key}https://api.mixerno.space/storyfire/user/${params[4]}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
                 followerscount2.innerHTML = data.followers
+                $("#imag2").attr('src', `${data.pfp}`);
                 username2.innerHTML = data.name
-          $("#imag2").attr('src', `${data.pfp}`);
           //plsworkgraph = json.subscribers.replace(/""/, "");
-          if(data.followers == 0) {
-                    
-                } else {
-                  difs.innerHTML = count - data.followers
-                    stuff.series[0].addPoint([
-            (new Date()).getTime(),
-            count - data.followers
-          ]);
-          if (stuff.series[0].data.length >= 700) {
-            stuff.series[0].data[0].remove()
-          }
-                }
+
+          if (data.followers == 0) {
+
+} else {
+  difs.innerHTML = count - data.followers
+  stuff.series[0].addPoint([
+    (new Date()).getTime(),
+    count - data.followers
+  ]);
+  if (stuff.series[0].data.length >= 700) {
+    stuff.series[0].data[0].remove()
+  }
+}
           count2 = data.followers
 
             })
         }
-        window.document.title = `Diffrence: ${count - count2}`
-      
+    window.document.title = `Diffrence: ${count - count2}`
 
-    };
-    setInterval(GETDATA, 4000);
-    $('#usersearch').on('keyup', function (e) {
-      if (e.keyCode === 13) {
-        $('#serch').click();
-      }
-    });
-    //
-    $('#serch').click(function () {
-        if(document.getElementById("pltform").value == "s") {
-            window.history.pushState("y", "g", `?${params[1]}?${$('#usersearch').val()}?${params[3]}?${params[4]}`);
-            stuff = new Highcharts.chart('graph', {
-      chart: {
-        backgroundColor: 'transparent',
-        renderTo: graph,
-        type: 'spline'
-      },
-      title: {
-        text: ``
-      },
-      xAxis: {
-        visible: false,
-        type: 'datetime',
-        tickPixelInterval: 500,
-        labels: {
-          style: {
-            color: "#1e1e1e"
-          },
-          enabled: false
+
+  };
+  setInterval(GETDATA, 4000);
+  $('#usersearch').on('keyup', function (e) {
+    if (e.keyCode === 13) {
+      $('#serch').click();
+    }
+  });
+  //
+  $('#serch').click(function () {
+    if (document.getElementById("pltform").value == "s") {
+      window.history.pushState("y", "g", `?${params[1]}?${$('#usersearch').val()}?${params[3]}?${params[4]}`);
+      stuff = new Highcharts.chart('graph', {
+        chart: {
+          backgroundColor: 'transparent',
+          renderTo: graph,
+          type: 'spline'
         },
-        lineWidth: 0,
-        lineColor: '#1e1e1e',
-        
-      },
-      yAxis: {
-        visible: false,
         title: {
-          text: ''
+          text: ``
         },
-        labels: {
+        xAxis: {
+          visible: false,
+          type: 'datetime',
+          tickPixelInterval: 500,
+          labels: {
+            style: {
+              color: "#1e1e1e"
+            },
             enabled: false
-        },
-        
-        lineColor: "#3c3c3c",
-        gridLineColor: "#3c3c3c",
-        tickColor: "#3c3c3c",
-        gridLineWidth: 0,
-                minorGridLineWidth: 0,
-      },
-
-      credits: {
-        enabled: false,
-        text: "Livecounts.space"
-      },
-
-      series: [{
-        showInLegend: false,
-        name: 'Followers',
-        marker: {
-          enabled: false
-        },
-        color: 'white',
-        lineColor: 'white'
-
-      }]
-    })
-        } else {
-            window.history.pushState("y", "g", `?${document.getElementById("pltform").value}?${$('#usersearch').val()}?${params[3]}?${params[4]}`);
-            stuff = new Highcharts.chart('graph', {
-      chart: {
-        backgroundColor: 'transparent',
-        renderTo: graph,
-        type: 'spline'
-      },
-      title: {
-        text: ``
-      },
-      xAxis: {
-        visible: false,
-        type: 'datetime',
-        tickPixelInterval: 500,
-        labels: {
-          style: {
-            color: "#1e1e1e"
           },
-          enabled: false
+          lineWidth: 0,
+          lineColor: '#1e1e1e',
+
         },
-        lineWidth: 0,
-        lineColor: '#1e1e1e',
-        
-      },
-      yAxis: {
-        visible: false,
-        title: {
-          text: ''
-        },
-        labels: {
-            enabled: false
-        },
-        
-        lineColor: "#3c3c3c",
-        gridLineColor: "#3c3c3c",
-        tickColor: "#3c3c3c",
-        gridLineWidth: 0,
-                minorGridLineWidth: 0,
-      },
-
-      credits: {
-        enabled: false,
-        text: "Livecounts.space"
-      },
-
-      series: [{
-        showInLegend: false,
-        name: 'Followers',
-        marker: {
-          enabled: false
-        },
-        color: 'white',
-        lineColor: 'white'
-
-      }]
-    })
-        }
-        
-
-    });
-
-    $('#usersearch2').on('keyup', function (e) {
-      if (e.keyCode === 13) {
-        $('#serch2').click();
-      }
-    });
-    //
-    $('#serch2').click(function () {
-        if(document.getElementById("pltform2").value == "s") {
-            window.history.pushState("y", "g", `?${params[1]}?${params[2]}?${params[3]}?${$('#usersearch2').val()}`);
-            stuff = new Highcharts.chart('graph', {
-      chart: {
-        backgroundColor: 'transparent',
-        renderTo: graph,
-        type: 'spline'
-      },
-      title: {
-        text: ``
-      },
-      xAxis: {
-        visible: false,
-        type: 'datetime',
-        tickPixelInterval: 500,
-        labels: {
-          style: {
-            color: "#1e1e1e"
+        yAxis: {
+          visible: false,
+          title: {
+            text: ''
           },
-          enabled: false
-        },
-        lineWidth: 0,
-        lineColor: '#1e1e1e',
-        
-      },
-      yAxis: {
-        visible: false,
-        title: {
-          text: ''
-        },
-        labels: {
+          labels: {
             enabled: false
-        },
-        
-        lineColor: "#3c3c3c",
-        gridLineColor: "#3c3c3c",
-        tickColor: "#3c3c3c",
-        gridLineWidth: 0,
-                minorGridLineWidth: 0,
-      },
-
-      credits: {
-        enabled: false,
-        text: "Livecounts.space"
-      },
-
-      series: [{
-        showInLegend: false,
-        name: 'Followers',
-        marker: {
-          enabled: false
-        },
-        color: 'white',
-        lineColor: 'white'
-
-      }]
-    })
-        } else {
-            window.history.pushState("y", "g", `?${params[1]}?${params[2]}?${document.getElementById("pltform2").value}?${$('#usersearch2').val()}`);
-            stuff = new Highcharts.chart('graph', {
-      chart: {
-        backgroundColor: 'transparent',
-        renderTo: graph,
-        type: 'spline'
-      },
-      title: {
-        text: ``
-      },
-      xAxis: {
-        visible: false,
-        type: 'datetime',
-        tickPixelInterval: 500,
-        labels: {
-          style: {
-            color: "#1e1e1e"
           },
-          enabled: false
+
+          lineColor: "#3c3c3c",
+          gridLineColor: "#3c3c3c",
+          tickColor: "#3c3c3c",
+          gridLineWidth: 0,
+          minorGridLineWidth: 0,
         },
-        lineWidth: 0,
-        lineColor: '#1e1e1e',
-        
-      },
-      yAxis: {
-        visible: false,
-        title: {
-          text: ''
+
+        credits: {
+          enabled: false,
+          text: "Livecounts.space"
         },
-        labels: {
+
+        series: [{
+          showInLegend: false,
+          name: 'Followers',
+          marker: {
             enabled: false
+          },
+          color: 'white',
+          lineColor: 'white'
+
+        }]
+      })
+    } else {
+      window.history.pushState("y", "g", `?${document.getElementById("pltform").value}?${$('#usersearch').val()}?${params[3]}?${params[4]}`);
+      stuff = new Highcharts.chart('graph', {
+        chart: {
+          backgroundColor: 'transparent',
+          renderTo: graph,
+          type: 'spline'
         },
-        
-        lineColor: "#3c3c3c",
-        gridLineColor: "#3c3c3c",
-        tickColor: "#3c3c3c",
-        gridLineWidth: 0,
-                minorGridLineWidth: 0,
-      },
-
-      credits: {
-        enabled: false,
-        text: "Livecounts.space"
-      },
-
-      series: [{
-        showInLegend: false,
-        name: 'Followers',
-        marker: {
-          enabled: false
+        title: {
+          text: ``
         },
-        color: 'white',
-        lineColor: 'white'
+        xAxis: {
+          visible: false,
+          type: 'datetime',
+          tickPixelInterval: 500,
+          labels: {
+            style: {
+              color: "#1e1e1e"
+            },
+            enabled: false
+          },
+          lineWidth: 0,
+          lineColor: '#1e1e1e',
 
-      }]
-    })
-        }
-        
+        },
+        yAxis: {
+          visible: false,
+          title: {
+            text: ''
+          },
+          labels: {
+            enabled: false
+          },
 
-    });
+          lineColor: "#3c3c3c",
+          gridLineColor: "#3c3c3c",
+          tickColor: "#3c3c3c",
+          gridLineWidth: 0,
+          minorGridLineWidth: 0,
+        },
+
+        credits: {
+          enabled: false,
+          text: "Livecounts.space"
+        },
+
+        series: [{
+          showInLegend: false,
+          name: 'Followers',
+          marker: {
+            enabled: false
+          },
+          color: 'white',
+          lineColor: 'white'
+
+        }]
+      })
+    }
+
+
+  });
+
+  $('#usersearch2').on('keyup', function (e) {
+    if (e.keyCode === 13) {
+      $('#serch2').click();
+    }
+  });
+  //
+  $('#serch2').click(function () {
+    if (document.getElementById("pltform2").value == "s") {
+      window.history.pushState("y", "g", `?${params[1]}?${params[2]}?${params[3]}?${$('#usersearch2').val()}`);
+      stuff = new Highcharts.chart('graph', {
+        chart: {
+          backgroundColor: 'transparent',
+          renderTo: graph,
+          type: 'spline'
+        },
+        title: {
+          text: ``
+        },
+        xAxis: {
+          visible: false,
+          type: 'datetime',
+          tickPixelInterval: 500,
+          labels: {
+            style: {
+              color: "#1e1e1e"
+            },
+            enabled: false
+          },
+          lineWidth: 0,
+          lineColor: '#1e1e1e',
+
+        },
+        yAxis: {
+          visible: false,
+          title: {
+            text: ''
+          },
+          labels: {
+            enabled: false
+          },
+
+          lineColor: "#3c3c3c",
+          gridLineColor: "#3c3c3c",
+          tickColor: "#3c3c3c",
+          gridLineWidth: 0,
+          minorGridLineWidth: 0,
+        },
+
+        credits: {
+          enabled: false,
+          text: "Livecounts.space"
+        },
+
+        series: [{
+          showInLegend: false,
+          name: 'Followers',
+          marker: {
+            enabled: false
+          },
+          color: 'white',
+          lineColor: 'white'
+
+        }]
+      })
+    } else {
+      window.history.pushState("y", "g", `?${params[1]}?${params[2]}?${document.getElementById("pltform2").value}?${$('#usersearch2').val()}`);
+      stuff = new Highcharts.chart('graph', {
+        chart: {
+          backgroundColor: 'transparent',
+          renderTo: graph,
+          type: 'spline'
+        },
+        title: {
+          text: ``
+        },
+        xAxis: {
+          visible: false,
+          type: 'datetime',
+          tickPixelInterval: 500,
+          labels: {
+            style: {
+              color: "#1e1e1e"
+            },
+            enabled: false
+          },
+          lineWidth: 0,
+          lineColor: '#1e1e1e',
+
+        },
+        yAxis: {
+          visible: false,
+          title: {
+            text: ''
+          },
+          labels: {
+            enabled: false
+          },
+
+          lineColor: "#3c3c3c",
+          gridLineColor: "#3c3c3c",
+          tickColor: "#3c3c3c",
+          gridLineWidth: 0,
+          minorGridLineWidth: 0,
+        },
+
+        credits: {
+          enabled: false,
+          text: "Livecounts.space"
+        },
+
+        series: [{
+          showInLegend: false,
+          name: 'Followers',
+          marker: {
+            enabled: false
+          },
+          color: 'white',
+          lineColor: 'white'
+
+        }]
+      })
+    }
+
+
+  });
 </script>
 
 </html>
