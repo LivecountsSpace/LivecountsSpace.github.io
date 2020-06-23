@@ -15,7 +15,7 @@
 <body>
     <center>
         <div>
-            <span>BETA v0.1 Livecounts.space</span>
+            <span id="ver">?</span>
         </div><br>
 <div class="main">
     <img id="imag" src="https://pbs.twimg.com/profile_images/1275176112037953536/511LDzfp_400x400.jpg">
@@ -133,6 +133,16 @@
     })
     GETDATA()
     var count = 0;
+    setstuff()
+    function setstuff() {
+        fetch(`http://livecounts.space/version.json`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                ver.innerHTML = data.version
+
+            })
+    }
     function GETDATA() {
         urli = window.location.href;
     params = urli.split('?');

@@ -15,7 +15,7 @@
 <body>
   <center>
     <div>
-      <span>BETA v0.1 Livecounts.space</span>
+      <span id="ver">?</span>
     </div><br>
     <div class="row">
       <div class="main">
@@ -181,6 +181,16 @@
   GETDATA()
   var count = 0;
   var count2 = 0;
+  setstuff()
+    function setstuff() {
+        fetch(`http://livecounts.space/version.json`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                ver.innerHTML = data.version
+
+            })
+    }
   function GETDATA() {
     urli = window.location.href;
     params = urli.split('?');
