@@ -1,2 +1,332 @@
-Coming soon! Just be patient. Twitter: @LivecountsSpace
-For updates.
+<html>
+
+<head>
+    <title id="pog">LIVECOUNTS.SPACE</title>
+    <meta name="description" content="Really simple design.">
+    <link rel="shortcut icon"
+    href="https://pbs.twimg.com/profile_images/1275176112037953536/511LDzfp_400x400.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://mixerno.space/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="https://mixerno.space/o2.css" />
+    <script src="https://mixerno.space/odometer.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+</head>
+
+<body>
+    <center>
+        <div>
+            <span>BETA v0.1 Livecounts.space</span>
+        </div><br>
+<div class="main">
+    <img id="imag" src="https://pbs.twimg.com/profile_images/1275176112037953536/511LDzfp_400x400.jpg">
+    <div id="username">Name</div>
+    <div></div>
+    <div id="followerscount" class="odometer">0</div>
+</div>
+<br>
+<div class="main">
+    <div id="graph">Graph</div>
+</div>
+<br>
+<div class="main">
+    <span>Platform: <select id="pltform">
+        <option value="s" selected>Select</option>
+        <option value="twitter">Twitter</option>
+        <option value="twitch">Twitch</option>
+        <option value="tikTok">TikTok</option>
+      </select></span>
+      <input type="text" placeholder="USERNAME" id="usersearch">
+      <button id="serch">Search</button>
+      <br>
+      <br>
+    <button>Compare</button>
+</div>
+</center>
+</body>
+<style>
+    body {
+        background-color:rgb(30, 30, 30);
+        color: white;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    .main {
+        width: 50%;
+        border: solid rgb(60, 60, 60);
+        border-radius: 1%;
+        padding: 1vh;
+    }
+    #imag {
+        height: 88;
+        width: 88;
+        border: solid white;
+        border-radius: 50%;
+    }
+    #USERNAME {
+        font-size: 4vh;
+    }
+    #followerscount {
+        font-size: 5vh;
+    }
+</style>
+<script>
+    var key = "https://cors.mixerno.space/";
+    //var key = "";
+    var urli = window.location.href;
+    var params = urli.split('?');
+    var stuff = new Highcharts.chart('graph', {
+      chart: {
+        backgroundColor: 'transparent',
+        renderTo: graph,
+        type: 'spline'
+      },
+      title: {
+        text: ``
+      },
+      xAxis: {
+        visible: false,
+        type: 'datetime',
+        tickPixelInterval: 500,
+        labels: {
+          style: {
+            color: "#1e1e1e"
+          },
+          enabled: false
+        },
+        lineWidth: 0,
+        lineColor: '#1e1e1e',
+        
+      },
+      yAxis: {
+        visible: false,
+        title: {
+          text: ''
+        },
+        labels: {
+            enabled: false
+        },
+        
+        lineColor: "#3c3c3c",
+        gridLineColor: "#3c3c3c",
+        tickColor: "#3c3c3c",
+        gridLineWidth: 0,
+                minorGridLineWidth: 0,
+      },
+
+      credits: {
+        enabled: false,
+        text: "Livecounts.space"
+      },
+
+      series: [{
+        showInLegend: false,
+        name: 'Followers',
+        marker: {
+          enabled: false
+        },
+        color: 'white',
+        lineColor: 'white'
+
+      }]
+    })
+    GETDATA()
+    var count = 0;
+    function GETDATA() {
+        urli = window.location.href;
+    params = urli.split('?');
+        if(params[1] == "twitter") {
+            fetch(`${key}https://api.mixerno.space/twitter/user/${params[2]}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                USERNAME.innerHTML = data.name
+          $("#imag").attr('src', `${data.pfp}`);
+
+            })
+            fetch(`https://bastet.socialblade.com/twitter/lookup?query=${params[2]}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                followerscount.innerHTML = data
+          stuff.series[0].addPoint([
+            (new Date()).getTime(),
+            data
+          ]);
+          if (stuff.series[0].data.length >= 700) {
+            stuff.series[0].data[0].remove()
+          }
+          count = data
+
+            })
+        } else if(params[1] == "twitch") {
+            fetch(`${key}https://api.mixerno.space/twitch/user/${params[2]}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                followerscount.innerHTML = data.followers
+                username.innerHTML = data.name
+          $("#imag").attr('src', `${data.pfp}`);
+          //plsworkgraph = json.subscribers.replace(/""/, "");
+          stuff.series[0].addPoint([
+            (new Date()).getTime(),
+            data.followers
+          ]);
+          if (stuff.series[0].data.length >= 700) {
+            stuff.series[0].data[0].remove()
+          }
+          count = data.followers
+
+            })
+        } else if(params[1] == "tiktok") {
+            fetch(`${key}https://api.mixerno.space/tiktok/user/${params[2]}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                followerscount.innerHTML = data.followers
+                username.innerHTML = data.name
+          $("#imag").attr('src', `${data.pfp}`);
+          //plsworkgraph = json.subscribers.replace(/""/, "");
+          stuff.series[0].addPoint([
+            (new Date()).getTime(),
+            data.followers
+          ]);
+          if (stuff.series[0].data.length >= 700) {
+            stuff.series[0].data[0].remove()
+          }
+          count = data.followers
+
+            })
+        }
+        window.document.title = `${params[2]}: ${count}`
+      
+
+    };
+    setInterval(GETDATA, 2000);
+    $('#usersearch').on('keyup', function (e) {
+      if (e.keyCode === 13) {
+        $('#serch').click();
+      }
+    });
+    //
+    $('#serch').click(function () {
+        if(document.getElementById("pltform").value == "s") {
+            window.history.pushState("y", "g", `?${params[1]}?${$('#usersearch').val()}`);
+            stuff = new Highcharts.chart('graph', {
+      chart: {
+        backgroundColor: 'transparent',
+        renderTo: graph,
+        type: 'spline'
+      },
+      title: {
+        text: ``
+      },
+      xAxis: {
+        visible: false,
+        type: 'datetime',
+        tickPixelInterval: 500,
+        labels: {
+          style: {
+            color: "#1e1e1e"
+          },
+          enabled: false
+        },
+        lineWidth: 0,
+        lineColor: '#1e1e1e',
+        
+      },
+      yAxis: {
+        visible: false,
+        title: {
+          text: ''
+        },
+        labels: {
+            enabled: false
+        },
+        
+        lineColor: "#3c3c3c",
+        gridLineColor: "#3c3c3c",
+        tickColor: "#3c3c3c",
+        gridLineWidth: 0,
+                minorGridLineWidth: 0,
+      },
+
+      credits: {
+        enabled: false,
+        text: "Livecounts.space"
+      },
+
+      series: [{
+        showInLegend: false,
+        name: 'Followers',
+        marker: {
+          enabled: false
+        },
+        color: 'white',
+        lineColor: 'white'
+
+      }]
+    })
+        } else {
+            window.history.pushState("y", "g", `?${document.getElementById("pltform").value}?${$('#usersearch').val()}`);
+            stuff = new Highcharts.chart('graph', {
+      chart: {
+        backgroundColor: 'transparent',
+        renderTo: graph,
+        type: 'spline'
+      },
+      title: {
+        text: ``
+      },
+      xAxis: {
+        visible: false,
+        type: 'datetime',
+        tickPixelInterval: 500,
+        labels: {
+          style: {
+            color: "#1e1e1e"
+          },
+          enabled: false
+        },
+        lineWidth: 0,
+        lineColor: '#1e1e1e',
+        
+      },
+      yAxis: {
+        visible: false,
+        title: {
+          text: ''
+        },
+        labels: {
+            enabled: false
+        },
+        
+        lineColor: "#3c3c3c",
+        gridLineColor: "#3c3c3c",
+        tickColor: "#3c3c3c",
+        gridLineWidth: 0,
+                minorGridLineWidth: 0,
+      },
+
+      credits: {
+        enabled: false,
+        text: "Livecounts.space"
+      },
+
+      series: [{
+        showInLegend: false,
+        name: 'Followers',
+        marker: {
+          enabled: false
+        },
+        color: 'white',
+        lineColor: 'white'
+
+      }]
+    })
+        }
+        
+
+    });
+</script>
+
+</html>
