@@ -231,13 +231,22 @@
         .then(response => response.json())
         .then(data => {
           console.log(data)
-          followerscount.innerHTML = data.followers
           username.innerHTML = data.name
           $("#imag").attr('src', `${data.pfp}`);
           //plsworkgraph = json.subscribers.replace(/""/, "");
-          count = data.followers
 
         })
+        fetch(`${key}https://api.mixerno.space/tiktok_estimated/${params[2]}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+
+                    followerscount.innerHTML = data.fols
+                
+          //plsworkgraph = json.subscribers.replace(/""/, "");
+          count = data.fols
+
+            })
     } else if(params[1] == "roblox") {
             fetch(`${key}https://friends.roblox.com/v1/users/${params[2]}/followers/count`)
             .then(response => response.json())
@@ -356,25 +365,45 @@
         .then(response => response.json())
         .then(data => {
           console.log(data)
+          username2.innerHTML = data.name
+          $("#imag2").attr('src', `${data.pfp}`);
+          //plsworkgraph = json.subscribers.replace(/""/, "");
+          
+
+        })
+        fetch(`${key}https://api.mixerno.space/tiktok_estimated/${params[4]}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                    //pog
+                    followerscount2.innerHTML = data.fols
+                
+          //plsworkgraph = json.subscribers.replace(/""/, "");
+          if (data.fols == 0) {
+            fetch(`${key}https://api.mixerno.space/tiktok/user/${params[4]}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
           followerscount2.innerHTML = data.followers
           username2.innerHTML = data.name
           $("#imag2").attr('src', `${data.pfp}`);
           //plsworkgraph = json.subscribers.replace(/""/, "");
-          if (data.followers == 0) {
-
-          } else {
-            difs.innerHTML = count - data.followers
-            stuff.series[0].addPoint([
-              (new Date()).getTime(),
-              count - data.followers
-            ]);
-            if (stuff.series[0].data.length >= 700) {
-              stuff.series[0].data[0].remove()
-            }
-          }
-          count2 = data.followers
+          
 
         })
+} else {
+  difs.innerHTML = count - data.fols
+  stuff.series[0].addPoint([
+    (new Date()).getTime(),
+    count - data.fols
+  ]);
+  if (stuff.series[0].data.length >= 700) {
+    stuff.series[0].data[0].remove()
+  }
+}
+count2 = data.fols
+
+            })
     } else if(params[3] == "roblox") {
             fetch(`${key}https://friends.roblox.com/v1/users/${params[2]}/followers/count`)
             .then(response => response.json())

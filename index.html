@@ -215,23 +215,34 @@
                 if(data.name == undefined) {
                     //pog
                 } else {
-                    followerscount.innerHTML = data.followers
                 username.innerHTML = data.name
           $("#imag").attr('src', `${data.pfp}`);
                 }
+
+
+            })
+            fetch(`${key}https://api.mixerno.space/tiktok_estimated/${params[2]}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                if(data.name == undefined) {
+                    //pog
+                } else {
+                    followerscount.innerHTML = data.fols
+                }
           //plsworkgraph = json.subscribers.replace(/""/, "");
-          if(data.followers == 0) {
+          if(data.fols == 0) {
                     
                 } else {
                     stuff.series[0].addPoint([
             (new Date()).getTime(),
-            data.followers
+            data.fols
           ]);
           if (stuff.series[0].data.length >= 700) {
             stuff.series[0].data[0].remove()
           }
                 }
-          count = data.followers
+          count = data.fols
 
             })
         } else if(params[1] == "roblox") {
