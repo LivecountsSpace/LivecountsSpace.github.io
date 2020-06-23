@@ -139,7 +139,7 @@
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                USERNAME.innerHTML = data.name
+                username.innerHTML = data.name
           $("#imag").attr('src', `${data.pfp}`);
 
             })
