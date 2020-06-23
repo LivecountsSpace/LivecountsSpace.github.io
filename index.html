@@ -148,13 +148,18 @@
             .then(data => {
                 console.log(data)
                 followerscount.innerHTML = data
-          stuff.series[0].addPoint([
+                if(data == 0) {
+                    
+                } else {
+                    stuff.series[0].addPoint([
             (new Date()).getTime(),
             data
           ]);
           if (stuff.series[0].data.length >= 700) {
             stuff.series[0].data[0].remove()
           }
+                }
+          
           count = data
 
             })
@@ -167,13 +172,17 @@
                 username.innerHTML = data.name
           $("#imag").attr('src', `${data.pfp}`);
           //plsworkgraph = json.subscribers.replace(/""/, "");
-          stuff.series[0].addPoint([
+          if(data.followers == 0) {
+                    
+                } else {
+                    stuff.series[0].addPoint([
             (new Date()).getTime(),
             data.followers
           ]);
           if (stuff.series[0].data.length >= 700) {
             stuff.series[0].data[0].remove()
           }
+                }
           count = data.followers
 
             })
@@ -186,13 +195,17 @@
                 username.innerHTML = data.name
           $("#imag").attr('src', `${data.pfp}`);
           //plsworkgraph = json.subscribers.replace(/""/, "");
-          stuff.series[0].addPoint([
+          if(data.followers == 0) {
+                    
+                } else {
+                    stuff.series[0].addPoint([
             (new Date()).getTime(),
             data.followers
           ]);
           if (stuff.series[0].data.length >= 700) {
             stuff.series[0].data[0].remove()
           }
+                }
           count = data.followers
 
             })
