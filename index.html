@@ -228,21 +228,21 @@
                 if(data.name == undefined) {
                     //pog
                 } else {
-                    followerscount.innerHTML = data.fols
+                    followerscount.innerHTML = Math.floor(data.fols)
                 }
           //plsworkgraph = json.subscribers.replace(/""/, "");
-          if(data.fols == 0) {
+          if(Math.floor(data.fols) == 0) {
                     
                 } else {
                     stuff.series[0].addPoint([
             (new Date()).getTime(),
-            data.fols
+            Math.floor(data.fols)
           ]);
           if (stuff.series[0].data.length >= 700) {
             stuff.series[0].data[0].remove()
           }
                 }
-          count = data.fols
+          count = Math.floor(data.fols)
 
             })
         } else if(params[1] == "roblox") {
