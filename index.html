@@ -17,8 +17,10 @@
         <div>
             <span id="ver">?</span>
         </div><br>
+        <img id="profimagback" src="">
 <div class="main">
-    <img id="imag" src="https://pbs.twimg.com/profile_images/1275176112037953536/511LDzfp_400x400.jpg">
+  
+    <img id="imag" src="">
     <div id="username">Name</div>
     <div></div>
     <div id="followerscount" class="odometer">0</div>
@@ -63,6 +65,14 @@
         width: 88;
         border: solid white;
         border-radius: 50%;
+
+    }
+    #profimagback {
+      object-fit: cover;
+      height: 200px;
+      width: 50%;
+      border: solid rgb(60, 60, 60);
+      border-bottom: 0rem;
     }
     #USERNAME {
         font-size: 4vh;
@@ -156,6 +166,7 @@
                 } else {
                 username.innerHTML = data.name
           $("#imag").attr('src', `${data.pfp}`);
+          $("#profimagback").attr('src', `${data.pfpbackground}`);
                 }
 
             })
