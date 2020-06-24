@@ -199,8 +199,12 @@
         .then(response => response.json())
         .then(data => {
           console.log(data)
-          username.innerHTML = data.name
+          if(data.name == undefined) {
+console.log("ded1")
+          } else {
+            username.innerHTML = data.name
           $("#imag").attr('src', `${data.pfp}`);
+          }
 
         })
       fetch(`https://bastet.socialblade.com/twitter/lookup?query=${params[2]}`)
@@ -311,8 +315,13 @@
         .then(response => response.json())
         .then(data => {
           console.log(data)
-          username2.innerHTML = data.name
+          if(data.name == undefined) {
+console.log("ded")
+          } else {
+            username2.innerHTML = data.name
           $("#imag2").attr('src', `${data.pfp}`);
+          }
+          
 
         })
       fetch(`https://bastet.socialblade.com/twitter/lookup?query=${params[4]}`)
