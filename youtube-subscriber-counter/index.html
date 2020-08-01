@@ -185,6 +185,7 @@
         YT.setsubs(Math.floor(json.items[0].statistics.subscriberCount))
         YT.setgoal(parseFloat(Math.floor(json.items[0].statistics.subscriberCount)))
         YT.setgraphpoint(parseFloat(Math.floor(json.items[0].statistics.subscriberCount)))
+        StartTheWait()
       }
     }).catch((error) => {
       console.error('Error:', error);
@@ -239,6 +240,8 @@
             YT.setsubs(Math.floor(json.items[0].statistics.subscriberCount))
             YT.setgoal(parseFloat(Math.floor(json.items[0].statistics.subscriberCount)))
             YT.setgraphpoint(parseFloat(Math.floor(json.items[0].statistics.subscriberCount)))
+            YT.setview(Math.floor(json.items[0].statistics.viewCount))
+            YT.setvideo(Math.floor(json.items[0].statistics.videoCount))
           }
         }).catch((error) => {
           console.error('Error:', error);
