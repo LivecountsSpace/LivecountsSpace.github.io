@@ -1,0 +1,96 @@
+body {
+    font-family: Roboto Regular !important;
+    background-color: rgb(246, 246, 246);
+    margin: 0;
+    overflow-x: hidden;
+    overflow-x: hidden;
+  }
+
+  #YTsubs {
+    font-size: 140px;
+  }
+
+  #YTname {
+    font-size: 55px;
+  }
+
+  #YTimg {
+    border-radius: 50%;
+    border: groove black 1px;
+
+  }
+
+  #channelidinput,
+  #buotn {
+    padding: 5px;
+    background-color: rgb(246, 246, 246);
+    font-size: 20px;
+    color: black;
+    border: groove black 1px;
+
+  }
+
+  #channelidinput {
+    width: 75%;
+
+  }
+
+  #buotn {
+    width: 25%;
+
+  }
+
+  #countbox,
+  #searchpart,
+  #graph {
+    background-color: rgb(255, 255, 255);
+    width: 1000px;
+    padding: 10px;
+    border-color: rgba(0, 0, 0, 0.500);
+    border: 0.5px solid rgba(0,0,0,.500);
+    border-radius: .50rem;
+  }
+
+  #countbox2 {
+    /*background-color: rgb(255, 255, 255);*/
+    width: 1020px;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 4;
+    margin: 0;
+
+  }
+
+  .countbox3 {
+    margin: 0;
+    background-color: rgb(255, 255, 255);
+    width: 32%;
+    border-color: rgba(0, 0, 0, 0.500);
+    border: 0.5px solid rgba(0,0,0,.500);
+    border-radius: .50rem;
+
+  }
+  .countbox3x {
+    margin: 0;
+    background-color: rgb(255, 255, 255);
+    width: 48%;
+    border-color: rgba(0, 0, 0, 0.500);
+    border: 0.5px solid rgba(0,0,0,.500);
+    border-radius: .50rem;
+
+  }
+
+
+  .fsize {
+    font-size: 30px;
+  }
+
+  #randomshitlmao {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    padding: 10px;
+    border-color: rgba(0, 0, 0, 0.500);
+    border-bottom: 0.5px solid rgba(0,0,0,.500);
+  }
