@@ -1,3 +1,12 @@
+
+@font-face {
+  font-family: Roboto Regular;
+    src: url(https://mixerno.space/fonts/Roboto-Regular.ttf);
+}
+@font-face {
+  font-family: Varela Round;
+    src: url(https://mixerno.space/fonts/VarelaRound-Regular.ttf);
+}
 body {
     font-family: Roboto Regular !important;
     background-color: rgb(246, 246, 246);
