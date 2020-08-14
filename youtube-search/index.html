@@ -83,7 +83,7 @@ function checkfunct(cid) {
             document.getElementById('username').title = data.channelid
             fetch('https://api.mixerno.space/youtube/channels/snippet/'+data.channelid).then(res => res.json()).then(data => {
                 document.getElementById('userimg').src = data.items[0].snippet.thumbnails.high.url
-                document.getElementById('username').src = data.items[0].snippet.title
+                document.getElementById('username').innerHTML = data.items[0].snippet.title
             })
         })
     }
