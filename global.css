@@ -4,6 +4,14 @@
     src: url(https://mixerno.space/fonts/Roboto-Regular.ttf);
 }
 @font-face {
+  font-family: Roboto Medium;
+    src: url(https://mixerno.space/fonts/Roboto-Medium.ttf);
+}
+@font-face {
+  font-family: Roboto Light ;
+    src: url(https://mixerno.space/fonts/Roboto-Light.ttf);
+}
+@font-face {
   font-family: Varela Round;
     src: url(https://mixerno.space/fonts/VarelaRound-Regular.ttf);
 }
@@ -16,17 +24,54 @@ body {
   }
 
   #YTsubs {
-    font-size: 140px;
+    font-size: calc(3.5em + 2vw) !important;;
   }
 
   #YTname {
-    font-size: 55px;
+    font-size: calc(1em + 1vw) !important;
   }
 
   #YTimg {
+    width: calc(4em + 4vw) !important;
+    height: calc(4em + 4vw) !important;
     border-radius: 50%;
     border: groove black 1px;
 
+  }
+  .grid {
+    display: grid;
+    grid-gap: 2rem;
+    gap: 2rem;
+  }
+.grid {
+    grid-template-columns: repeat(3,minmax(0,1fr));
+}
+.grid2 {
+  display: grid;
+  grid-gap: 2rem;
+  gap: 2rem;
+}
+.grid2 {
+  grid-template-columns: repeat(2,minmax(0,1fr));
+}
+.grid3 {
+  display: grid;
+  grid-gap: 2rem;
+  gap: 2rem;
+}
+.grid3 {
+  grid-template-columns: repeat(4,minmax(0,1fr));
+}
+  .uppercayts {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: Roboto Medium;
+  }
+  #thingy {
+    font-size: calc(0.5em + 0.5vw) !important;
+  }
+  #lolxd {
+    vertical-align:middle
   }
 
   #channelidinput,
@@ -51,22 +96,32 @@ body {
 
   #countbox,
   #searchpart,
-  #graph {
+  #graph,.buttosn {
     background-color: rgb(255, 255, 255);
-    width: 1000px;
+    width: 70%;
     padding: 10px;
     border-color: rgba(0, 0, 0, 0.500);
     border: 0.5px solid rgba(0,0,0,.500);
     border-radius: .50rem;
   }
+  button {
+    padding: 20px;
+    background-color: whitesmoke;
+    color: black;
+    -webkit-appearance: button;
+    border-color: rgba(0, 0, 0, 0.500);
+    border: 0.5px solid rgba(0,0,0,.500);
+    border-radius: .50rem;
+    width: 100%;
+  }
 
   #countbox2 {
     /*background-color: rgb(255, 255, 255);*/
-    width: 1020px;
-    padding: 0;
-    display: flex;
+    width: 70%;
+    padding: 10px;
+    /*display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-between;*/
     flex: 4;
     margin: 0;
 
@@ -74,8 +129,9 @@ body {
 
   .countbox3 {
     margin: 0;
+    padding: 10px;
     background-color: rgb(255, 255, 255);
-    width: 32%;
+    width: 100%;
     border-color: rgba(0, 0, 0, 0.500);
     border: 0.5px solid rgba(0,0,0,.500);
     border-radius: .50rem;
@@ -83,8 +139,9 @@ body {
   }
   .countbox3x {
     margin: 0;
+    padding: 10px;
     background-color: rgb(255, 255, 255);
-    width: 48%;
+    width: 100%;
     border-color: rgba(0, 0, 0, 0.500);
     border: 0.5px solid rgba(0,0,0,.500);
     border-radius: .50rem;
@@ -93,7 +150,10 @@ body {
 
 
   .fsize {
-    font-size: 30px;
+    font-size: calc(0.8em + 0.8vw);
+  }
+  .fsize2 {
+    font-size: calc(0.5em + 0.5vw);
   }
 
   #randomshitlmao {
@@ -102,4 +162,15 @@ body {
     padding: 10px;
     border-color: rgba(0, 0, 0, 0.500);
     border-bottom: 0.5px solid rgba(0,0,0,.500);
+    flex-wrap: wrap;
+  }
+  .about {
+    width: 70%;
+    padding: 10px;
+    text-align: center;
+    background-color: white;
+    font-weight: 100 !important;
+    border-color: rgba(0, 0, 0, 0.500);
+    border: 0.5px solid rgba(0,0,0,.500);
+    border-radius: .50rem;
   }
