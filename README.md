@@ -1,4 +1,2 @@
-![alt text](https://raw.githubusercontent.com/LivecountsSpace/LivecountsSpace.github.io/master/poggers.png "The Logo lmao")
-# LivecountsSpace.github.io
-
-Is in development. Come back soon! - [Mixerno](https://twitter.com/mixernoboi)
+# Alpha 0.1
+added Youtube search and yt sub counter with changed design.
