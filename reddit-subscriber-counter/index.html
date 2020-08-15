@@ -1,0 +1,273 @@
+<html>
+
+<head>
+  <title id="pog">Livecounts.space | Twitter Follower Counter</title>
+  <meta name="description" content="Youtube Subscriber Counter Which will let you see your channel's own statistics.">
+  <link rel="shortcut icon"
+    href="https://raw.githubusercontent.com/LivecountsSpace/LivecountsSpace.github.io/master/poggers.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="https://mixerno.space/jquery-3.1.1.min.js"></script>
+  <script src="https://mixerno.space/odometer.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <link rel="stylesheet" href="../odometer.css">
+
+  <link rel="stylesheet" href="https://mixerno.space/bootstrap.css">
+  <script src="https://mixerno.space/bootstrap.js"></script>
+
+  <link rel="stylesheet" href="../global.css">
+
+</head>
+
+<body onload="FirstLoad(window.location.href.split('?cid=')[1]);">
+  <center>
+    <div id="randomshitlmao">
+      <div class="allign">
+        <img src="https://raw.githubusercontent.com/LivecountsSpace/LivecountsSpace.github.io/master/poggers.png"
+          id="lolxd" height="45" width="45">
+        <span class="uppercayts"><a style="color:black; text-decoration: none;"
+            href="https://livecounts.space">LiveCounts.Space</a></span>
+      </div>
+    </div><br>
+    <div id="countbox">
+      <img src="https://raw.githubusercontent.com/LivecountsSpace/LivecountsSpace.github.io/master/poggers.png"
+        id="YTimg" height="140" width="140">
+      <div id="YTname">Livecounts.space | Loading username.</div>
+      <div id="YTidentifier">Livecounts.space | Loading user id.</div>
+      <div id="YTsubs" class="odometer"></div>
+      <div id="thingy">Subscribers</div>
+    </div>
+    <br>
+
+    <div id="countbox2">
+      <div class="grid">
+        <div class="countbox3">
+          <div class="odometer fsize" id="YTgoal">0</div>
+          <div class="fsize2">Goal</div>
+        </div>
+        <div class="countbox3">
+          <div class="odometer fsize" id="YTvideos">0</div>
+          <div class="fsize2">Active Users</div>
+        </div>
+        <div class="countbox3">
+          <div class="odometer fsize" id="YTviews">0</div>
+          <div class="fsize2">Videostream Links</div>
+        </div>
+      </div>
+    </div>
+    <!--<br>
+    <div id="searchpart">
+      <input type="text" id="channelidinput" placeholder="Channel ID"><button id="buotn"
+        onclick="if(document.getElementById('channelidinput').value == ''){}else{changechannel(document.getElementById('channelidinput').value)}">Go</button>
+    </div>
+  
+  
+  window.open(`https://youtube.com/channel/${window.location.href.split('?cid=')[1]}`,'_blank');
+  -->
+    <br>
+    <div id="graph">
+      <div id="GraphFun"></div>
+    </div><br>
+    <div class="buttosn">
+      <div class="grid3">
+        <div>
+          <button id="" data-toggle="modal" data-target="#changeuser"
+            onclick="window.open(`../reddit-search`,'_blank');">Change User</button>
+        </div>
+        <div>
+          <button id="" data-toggle="modal" data-target="#compare"
+            onclick="window.open(`../compare`,'_blank');">Compare</button>
+        </div>
+        <div>
+          <button id="" data-toggle="modal" data-target="#compare"
+            onclick="window.open(`https://reddit.com/r/${window.location.href.split('?cid=')[1]}`,'_blank');">Visit
+            Page</button>
+        </div>
+        <div>
+          <button id="" data-toggle="modal" data-target="#customize">Customize</button>
+        </div>
+      </div>
+
+    </div>
+
+    <br>
+    <div class="about">
+      <h2>About user <span id="YTname1x">Livecounts.space | Loading username.</span></h2>
+      <p id="YTdesc" style="text-align: left;"></p>
+    </div><br>
+
+    <div style="background-color: rgb(255, 255, 255); color: black;" class="container2">
+      <div class="modal fade" id="customize" role="dialog">
+        <div style="background-color: rgb(255, 255, 255); color: black;" class="modal-dialog">
+          <div style="background-color: rgb(255, 255, 255); color: black;" class="modal-content">
+            <div style="background-color: rgb(255, 255, 255); color: black;" class="modal-header">
+              <!-- <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+              <h4 class="modal-title">Customize</h4>
+            </div>
+            <div style="background-color: rgb(255, 255, 255); color: black;" class="modal-body">
+              <p>Style</p>
+              <select id="islite">
+                <option value="lmode">Lite Mode</option>
+                <option value="nmode">Normal Mode</option>
+              </select>
+            </div>
+            <div style="background-color: rgb(255, 255, 255); color: black;" class="modal-footer">
+              <button type="button" data-dismiss="modal"
+                onclick="if(document.getElementById('islite').value == 'lmode'){$('style').append('body { font-family: Roboto Light !important}');$('style').append('.odometer.odometer-auto-theme.odometer-animating-up .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-up .odometer-ribbon-inner { -webkit-transition: -webkit-transform 0.5s !important;-moz-transition: -moz-transform 0.5s !important;-ms-transition: -ms-transform 0.5s !important;-o-transition: -o-transform 0.5s !important;transition: transform 0.5s !important;}');$('style').append('.odometer.odometer-auto-theme.odometer-animating-down.odometer-animating .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-down.odometer-animating .odometer-ribbon-inner { -webkit-transition: -webkit-transform 0.5s !important;-moz-transition: -moz-transform 0.5s !important;-ms-transition: -ms-transform 0.5s !important;-o-transition: -o-transform 0.5s !important;transition: transform 0.5s !important;}');}else{$('style').append('body { font-family: Roboto Regular !important}');$('style').append('.odometer.odometer-auto-theme.odometer-animating-up .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-up .odometer-ribbon-inner { -webkit-transition: -webkit-transform 2s !important;-moz-transition: -moz-transform 2s !important;-ms-transition: -ms-transform 2s !important;-o-transition: -o-transform 2s !important;transition: transform 2s !important;}');$('style').append('.odometer.odometer-auto-theme.odometer-animating-down.odometer-animating .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-down.odometer-animating .odometer-ribbon-inner { -webkit-transition: -webkit-transform 2s !important;-moz-transition: -moz-transform 2s !important;-ms-transition: -ms-transform 2s !important;-o-transition: -o-transform 2s !important;transition: transform 2s !important;}');}">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </center>
+</body>
+<style></style>
+<script>
+  if (window.location.href.split('?cid=')[1] == undefined) {
+    location.href = `?cid=pewdiepiesubmissions`
+  }
+  /*
+  $('style').append('.odometer.odometer-auto-theme.odometer-animating-up .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-up .odometer-ribbon-inner { -webkit-transition: -webkit-transform 0.5s !important;-moz-transition: -moz-transform 0.5s !important;-ms-transition: -ms-transform 0.5s !important;-o-transition: -o-transform 0.5s !important;transition: transform 0.5s !important;}');$('style').append('.odometer.odometer-auto-theme.odometer-animating-down.odometer-animating .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-down.odometer-animating .odometer-ribbon-inner { -webkit-transition: -webkit-transform 0.5s !important;-moz-transition: -moz-transform 0.5s !important;-ms-transition: -ms-transform 0.5s !important;-o-transition: -o-transform 0.5s !important;transition: transform 0.5s !important;}');
+      
+
+
+  $('style').append('body { font-family: Roboto Regular !important}');$('style').append('.odometer.odometer-auto-theme.odometer-animating-up .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-up .odometer-ribbon-inner { -webkit-transition: -webkit-transform 0.5s !important;-moz-transition: -moz-transform 0.5s !important;-ms-transition: -ms-transform 0.5s !important;-o-transition: -o-transform 0.5s !important;transition: transform 0.5s !important;}');$('style').append('.odometer.odometer-auto-theme.odometer-animating-down.odometer-animating .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-down.odometer-animating .odometer-ribbon-inner { -webkit-transition: -webkit-transform 2s !important;-moz-transition: -moz-transform 2s !important;-ms-transition: -ms-transform 2s !important;-o-transition: -o-transform 2s !important;transition: transform 2s !important;}');
+        */
+  var graphData;
+  $(document).ready(function () {
+    graphData = new Highcharts.chart('GraphFun', {
+      chart: {
+        backgroundColor: 'transparent',
+        renderTo: GraphFun,
+        type: 'line'
+      },
+      title: {
+        text: `Subscriber Graph`
+      },
+      xAxis: {
+        type: 'datetime',
+        tickPixelInterval: 500,
+      },
+      yAxis: {
+        title: {
+          text: ''
+        },
+      },
+
+      credits: {
+        enabled: true,
+        text: "Livecounts.space"
+      },
+
+      series: [{
+        name: 'Subscribers',
+        marker: {
+          enabled: false
+        },
+
+      }]
+    })
+  });
+  /*// Get the input field
+  var input = document.getElementById("channelidinput");
+
+  // Execute a function when the user releases a key on the keyboard
+  input.addEventListener("keyup", function (event) {
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode === 13) {
+      // Cancel the default action, if needed
+      event.preventDefault();
+      // Trigger the button element with a click
+      document.getElementById("buotn").click();
+    }
+  });*/
+  var estimated = true
+  var YT = {
+    setname: function (name) {
+      document.getElementById('YTname').innerHTML = name
+      document.getElementById('YTname1x').innerHTML = name
+    },
+    setpicture: function (url) {
+      document.getElementById('YTimg').src = url
+    },
+    setsubs: function (count) {
+      document.getElementById('YTsubs').innerHTML = count
+    },
+    setdesc: function (count) {
+      document.getElementById('YTdesc').innerHTML = count
+    },
+    setgraphpoint: function (count) {
+      graphData.series[0].addPoint([
+        (new Date()).getTime(),
+        parseFloat(count)
+      ]);
+      if (graphData.series[0].data.length >= 900) {
+        graphData.series[0].data[0].remove()
+      }
+    },
+    setgoal: function (count) {
+      document.getElementById('YTgoal').innerHTML = GetGoal(count);
+    },
+    setview: function (count) {
+      document.getElementById('YTviews').innerHTML = count;
+    },
+    setvideo: function (count) {
+      document.getElementById('YTvideos').innerHTML = count;
+    },
+    setid: function (count) {
+      document.getElementById('YTidentifier').innerHTML = count;
+    }
+  }
+  function GetGoal(count) {
+    if (count < 10) return 10; var x1 = Math.floor(Math.log10(count)); var x2 = Math.ceil(count / 10 ** x1); var x3 = x2 * 10 ** x1; var goal = x3 - count; return goal
+  }
+  function changechannel(cid) {
+    location.href = `?cid=${cid}`
+  }
+  function FirstLoad(id) {
+    //console.log(id)
+    fetch('https://api.reddit.com/r/'+id+'/about').then(res => res.json()).then(data => {
+      //console.log(data)
+      var json = data
+      YT.setname(json.data.display_name)
+      YT.setdesc(json.data.public_description.replace(/↵/g, `\n`))
+      YT.setsubs(Math.floor(json.data.subscribers))
+      YT.setgoal(Math.floor(json.data.subscribers))
+      YT.setgraphpoint(Math.floor(json.data.subscribers))
+      YT.setpicture(json.data.icon_img)
+      YT.setview(json.data.videostream_links_count)
+      YT.setvideo(json.data.active_user_count)
+      YT.setid(json.data.display_name_prefixed)
+      StartTheWait()
+
+    }).catch((error) => {
+      console.error('Error:', error);
+    });
+
+  }
+
+  function StartTheWait() {
+    setInterval(function () {
+      fetch('https://api.reddit.com/r/'+window.location.href.split('?cid=')[1]+'/about').then(res => res.json()).then(data => {
+        //console.log(data)
+        var json = data
+        YT.setname(json.data.display_name)
+      YT.setdesc(json.data.public_description.replace(/↵/g, `\n`))
+      YT.setsubs(Math.floor(json.data.subscribers))
+      YT.setgoal(Math.floor(json.data.subscribers))
+      YT.setgraphpoint(Math.floor(json.data.subscribers))
+      YT.setpicture(json.data.icon_img)
+      YT.setview(json.data.videostream_links_count)
+      YT.setvideo(json.data.active_user_count)
+      YT.setid(json.data.display_name_prefixed)
+      }).catch((error) => {
+        console.error('Error:', error);
+      });
+    }, 2000);
+
+  }
+</script>
+
+</html>

@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <title id="pog">Livecounts.space</title>
+        <meta name="description" content="The Space Number Two.">
+        <link rel="shortcut icon" href="https://raw.githubusercontent.com/LivecountsSpace/LivecountsSpace.github.io/master/poggers.png">
+    </head>
+    <body>
+        <center><br>
+            <div class="searchbox">
+                Search an user for the counter: TikTok Live Follower Counter <br><br>
+                <input type="text" placeholder="username" id="inpast" style="padding: 20px;
+                background-color: whitesmoke;
+                color: black;
+                -webkit-appearance: button;
+                border-color: rgba(0, 0, 0, 0.500);
+                border: 0.5px solid rgba(0,0,0,.500);
+                border-radius: .50rem;"> <button style="padding: 20px;
+                background-color: whitesmoke;
+                color: black;
+                -webkit-appearance: button;
+                border-color: rgba(0, 0, 0, 0.500);
+                border: 0.5px solid rgba(0,0,0,.500);
+                border-radius: .50rem;" onclick="checkfunct(document.getElementById('inpast').value)">Search</button><br><br>Results: <br>
+                <div>
+                    <div >
+                        <img onclick="window.open(`../tiktok-follower-counter?cid=${document.getElementById('username').title}`,'_blank');" src="https://raw.githubusercontent.com/LivecountsSpace/LivecountsSpace.github.io/master/poggers.png" height="125" width="125" id="userimg"><br>
+                        <span onclick="window.open(`../tiktok-follower-counter?cid=${document.getElementById('username').title}`,'_blank');" id="username" title="search something.">Livecounts.space | Waiting for user input.</span>
+                    </div>
+                </div>
+            </div>
+        </center>
+    </body>
+    <style>
+        
+@font-face {
+  font-family: Roboto Regular;
+    src: url(https://mixerno.space/fonts/Roboto-Regular.ttf);
+}
+@font-face {
+  font-family: Roboto Medium;
+    src: url(https://mixerno.space/fonts/Roboto-Medium.ttf);
+}
+@font-face {
+  font-family: Roboto Light ;
+    src: url(https://mixerno.space/fonts/Roboto-Light.ttf);
+}
+@font-face {
+  font-family: Varela Round;
+    src: url(https://mixerno.space/fonts/VarelaRound-Regular.ttf);
+}
+body {
+    margin: 0;
+    background-color: whitesmoke;
+    color:black;
+    font-family: Roboto Medium;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.searchbox {
+    background-color: white;
+    width: 70%;
+    padding: 10px;
+    border-color: rgba(0, 0, 0, 0.500);
+    border: 0.5px solid rgba(0,0,0,.500);
+    border-radius: .50rem;
+}
+.grid3 {
+  display: grid;
+  grid-gap: 2rem;
+  gap: 2rem;
+}
+.grid3 {
+  grid-template-columns: repeat(5,minmax(0,1fr));
+}
+    </style>
+    <script>
+function checkfunct(cid) {
+    
+        fetch('https://api.mixerno.space/tiktok/'+cid).then(res => res.json()).then(data => {
+            console.log(data)
+            document.getElementById('username').title = data.uid
+            document.getElementById('userimg').src = data.avatarurl
+                document.getElementById('username').innerHTML = data.name
+            
+            
+        })
+    
+}
+    </script>
+</html>
