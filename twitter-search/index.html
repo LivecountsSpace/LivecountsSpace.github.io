@@ -8,7 +8,7 @@
         <center><br>
             <div class="searchbox">
                 Search an user for the counter: Twitter Live Follower Counter <br><br>
-                <input type="text" placeholder="Username or Channel ID" id="inpast" style="padding: 20px;
+                <input type="text" placeholder="username (after the @) or twitter.com/" id="inpast" style="padding: 20px;
                 background-color: whitesmoke;
                 color: black;
                 -webkit-appearance: button;
@@ -76,11 +76,13 @@ body {
     <script>
 function checkfunct(cid) {
     
-        fetch('https://api.mixerno.space/twitter/user/'+cid).then(res => res.json()).then(data => {
+        fetch('https://api.mixerno.space/twitter/search/user/'+cid).then(res => res.json()).then(data => {
             console.log(data)
-            document.getElementById('username').title = data.name
-            document.getElementById('userimg').src = data.pfp
-            document.getElementById('username').innerHTML = data.fullname
+            document.getElementById('username').title = data[0].screen_name
+            fetch('https://api.mixerno.space/twitter/user/'+data[0].screen_name).then(res => res.json()).then(data => {
+                document.getElementById('userimg').src = data.pfp
+                document.getElementById('username').innerHTML = data.fullname
+            })
             
         })
     
